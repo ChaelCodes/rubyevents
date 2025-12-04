@@ -83,3 +83,4 @@ service_account.json
 
 # IDE files
 /.idea
+vendor/bundle/
