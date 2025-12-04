@@ -232,19 +232,19 @@
   video_id: "enrique-carlos-mogollan-sfruby-2025"
   id: "enrique-carlos-mogollan-sfruby-2025"
 
-- title: "Debugging Gusto at scale"
-  raw_title: "Debugging Gusto at scale"
+- title: "Pack It Up: Why Packwerk Can't Save Your Messy Rails App (But You Can)"
+  raw_title: "Pack It Up: Why Packwerk Can't Save Your Messy Rails App (But You Can)"
   speakers:
-    - Ngan Pham
+    - Stephan Hagemann
   event_name: "SF Ruby 2025"
   date: "2025-11-19"
   published_at: "TODO"
   description: |-
-    Real-world strategies for debugging large-scale Rails applications at Gusto.
+    Talk about Packwerk and modularizing Rails applications.
   track: "Main Stage"
   video_provider: "scheduled"
-  video_id: "ngan-pham-sfruby-2025"
-  id: "ngan-pham-sfruby-2025"
+  video_id: "stephan-hagemann-sfruby-2025"
+  id: "stephan-hagemann-sfruby-2025"
 
 - title: "Building Cloud Data Infrastructure with Ruby"
   raw_title: "Building Cloud Data Infrastructure with Ruby"
