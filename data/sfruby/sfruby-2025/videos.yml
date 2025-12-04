@@ -240,7 +240,7 @@
   date: "2025-11-19"
   published_at: "TODO"
   description: |-
-    Talk about Packwerk and modularizing Rails applications.
+    Packwerk promises to save your messy Rails monolith by enforcing boundaries and modularization. But can it really fix architectural problems that have accumulated over years? This talk explores the limitations of Packwerk and other tooling solutions, while showing you what actually matters: the human decisions and practices that lead to maintainable code. You'll learn practical strategies for improving your Rails application's architecture, with or without Packwerk.
   track: "Main Stage"
   video_provider: "scheduled"
   video_id: "stephan-hagemann-sfruby-2025"
