@@ -47,10 +47,9 @@ All file changes will be present locally when you close the container.
 
 ### Setup
 
-To prepare your database and seed content via `docker-compose`, run:
+To prepare your developer environment, install yarn and gem dependencies, and setup your database, run:
 
 ```
-# Note: this requires docker daemon running on your machine.
 bin/setup
 ```
 
