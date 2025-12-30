@@ -1,0 +1,32 @@
+services:
+  rails-app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    command: sleep infinity
+    environment:
+      - RAILS_ENV=development
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    volumes:
+      - ..:/rails:cached # Mounts the local project directory
+      - /rails/node_modules # Prevents overwriting node_modules
+    stdin_open: true
+    tty: true
+  meilisearch:
+    image: getmeili/meilisearch:v1.10
+    ports:
+      - "7700:7700"
+    volumes:
+      - ./storage:/rails/storage
+    environment:
+      MEILI_DB_PATH: /rails/storage/meilisearch
+      MEILI_NO_ANALYTICS: true
+      MEILI_ENV: development
+    restart: unless-stopped
+    networks:
+      - meilisearch
+networks:
+  meilisearch:
+    driver: bridge
