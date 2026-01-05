@@ -3,7 +3,7 @@ class FavoriteUsersController < ApplicationController
 
   # GET /favorite_users or /favorite_users.json
   def index
-    @favorite_users = FavoriteUser.all
+    @favorite_users = FavoriteUser.where(user: Current.user).includes(:favorite_user)
   end
 
   # POST /favorite_users or /favorite_users.json
