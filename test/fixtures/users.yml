@@ -63,6 +63,14 @@ two:
   slug: two
   password_digest: <%= BCrypt::Password.create("Secret1*3*5*") %>
 
+chael:
+  email: chaelcodes@rubyevents.org
+  password_digest: <%= BCrypt::Password.create("Secret1*3*5*") %>
+  name: Rachael Wright-Munn
+  github_handle: chaelcodes
+  slug: rachael-wright-munn
+  talks_count: 3
+
 marco:
   email: marcoroth@rubyevents.org
   password_digest: <%= BCrypt::Password.create("Secret1*3*5*") %>
@@ -72,7 +80,7 @@ marco:
   bio: "Marco"
   website: https://marcoroth.dev
   slug: marcoroth
-  talks_count: 2
+  talks_count: 42
 
 yaroslav:
   email: yaroslav@rubyevents.org

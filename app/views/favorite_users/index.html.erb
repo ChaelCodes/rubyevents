@@ -1,6 +1,55 @@
-<div class="container">
-  <h2>Favorite Rubyists</h2>
-  <div id="favorite_users" class="min-w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
-    <%= render @favorite_users %>
-  </div>
+<div class="container flex flex-col gap-5">
+  <% if @ruby_friends.empty? && @favorite_rubyists.empty? %>
+    <h2>
+      <%= fa("star", size: :sm, style: :solid, class: "fill-yellow-400 inline") %>
+      Favorite Rubyists
+    </h2>
+    <div class="mt-2">
+      You can favorite users on their profile to keep track of recent talks and
+      events they are attending. This feature is in-progress, expect more soon!
+    </div>
+  <% else %>
+    <% if @ruby_friends&.any? %>
+      <div id="ruby-friends">
+        <h2>
+          <%= fa("star", size: :sm, style: :solid, class: "fill-red-600 inline") %>
+          Ruby Friends
+        </h2>
+
+        <div class="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-2">
+          <% @ruby_friends.each do |user| %>
+            <div
+              class="
+                border rounded-lg bg-white hover:bg-gray-200 transition-bg
+                duration-300 ease-in-out
+              "
+            >
+              <%= render partial: "users/card", locals: { user: user, favorite_user: user.find_favorite_user(user: Current.user) } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <% if @favorite_rubyists&.any? %>
+      <div id="favorite-rubyists">
+        <h2>
+          <%= fa("star", size: :sm, style: :solid, class: "fill-yellow-400 inline") %>
+          Favorite Rubyists
+        </h2>
+
+        <div class="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-2">
+          <% @favorite_rubyists.each do |user| %>
+            <div
+              class="
+                border rounded-lg bg-white hover:bg-gray-200 transition-bg
+                duration-300 ease-in-out
+              "
+            >
+              <%= render partial: "users/card", locals: { user: user, favorite_user: user.find_favorite_user(user: Current.user) } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>

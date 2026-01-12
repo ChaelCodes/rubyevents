@@ -3,7 +3,10 @@ class FavoriteUsersController < ApplicationController
 
   # GET /favorite_users or /favorite_users.json
   def index
-    @favorite_users = FavoriteUser.where(user: Current.user).includes(:favorite_user)
+    # todo - NO N+1 CHAEL >[
+    favorite_users = FavoriteUser.where(user: Current.user).includes(:favorite_user)
+    @favorite_rubyists = User.where(id: favorite_users.where.missing(:mutual_favorite_user).select(:favorite_user_id))
+    @ruby_friends = User.where(id: favorite_users.where.associated(:mutual_favorite_user).select(:favorite_user_id))
   end
 
   # POST /favorite_users or /favorite_users.json

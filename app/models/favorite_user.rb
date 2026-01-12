@@ -24,4 +24,9 @@ class FavoriteUser < ApplicationRecord
   belongs_to :favorite_user, class_name: "User"
 
   validates :user, comparison: {other_than: :favorite_user}
+
+  has_one :mutual_favorite_user,
+    foreign_key: [:user_id, :favorite_user_id],
+    primary_key: [:favorite_user_id, :user_id],
+    class_name: "FavoriteUser"
 end

@@ -290,6 +290,10 @@ class User < ApplicationRecord
     broadcast_update target: dom_id(self, :header_content), partial: "profiles/header_content", locals: {user: self}
   end
 
+  def find_favorite_user(user:)
+    FavoriteUser.find_or_initialize_by user:, favorite_user: self
+  end
+
   def to_meta_tags
     {
       title: name,
