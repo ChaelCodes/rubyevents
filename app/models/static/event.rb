@@ -305,8 +305,9 @@ module Static
 
       event.assign_attributes(
         name: title,
-        date: attributes["date"],
-        date_precision: attributes["date_precision"] || "day",
+        date: attributes["date"] || published_at,
+        date_precision: date_precision || "day",
+        description: attributes["description"],
         series: static_series.event_series_record,
         website: website,
         country_code: country&.alpha2,

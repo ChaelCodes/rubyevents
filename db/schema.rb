@@ -216,6 +216,7 @@ ActiveRecord::Schema[8.2].define(version: 2026_07_05_130000) do
     t.datetime "created_at", null: false
     t.date "date"
     t.string "date_precision", default: "day", null: false
+    t.string "description"
     t.date "end_date"
     t.integer "event_series_id", null: false
     t.string "featured_background"
