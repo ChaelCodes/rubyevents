@@ -102,6 +102,8 @@ class TalksController < ApplicationController
     @talk = Talk.includes(:approved_topics, :speakers, event: :series, watched_talks: :user).find_by(slug: params[:slug])
     @talk ||= Talk.find_by_slug_or_alias(params[:slug])
 
+    Rails.error.set_context(record: @talk) if @talk.present?
+
     return redirect_to talks_path, status: :moved_permanently if @talk.blank?
 
     redirect_to talk_path(@talk), status: :moved_permanently if @talk.slug != params[:slug]
