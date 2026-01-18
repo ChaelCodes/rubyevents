@@ -25,11 +25,15 @@ class FavoriteUser < ApplicationRecord
 
   validates :user, comparison: {other_than: :favorite_user}
 
+  has_one :mutual_favorite_user, class_name: "FavoriteUser", primary_key: [:user_id, :favorite_user_id], foreign_key: [:favorite_user_id, :user_id]
+
   def self.recommendations_for(user)
-    user
-      .watched_talks
-      .includes(talk: :speakers)
-      .limit(6)
-      .flat_map { |wt| wt.talk.speakers }
+    recommended_user_ids = user
+      .watched_talks.joins(talk: :speakers).limit(6).pluck("users.id")
+
+    recommended_user_ids
+      .map do |user_id|
+        FavoriteUser.new(user: user, favorite_user_id: user_id)
+      end
   end
 end

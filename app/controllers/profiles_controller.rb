@@ -136,7 +136,7 @@ class ProfilesController < ApplicationController
 
   def set_favorite_user
     return unless Current.user
-    @favorite_user = FavoriteUser.find_by(user: Current.user, favorite_user: @user)
+    @favorite_user = @user.favorited_by.find_or_initialize_by(user: Current.user)
   end
 
   def set_mutual_events
