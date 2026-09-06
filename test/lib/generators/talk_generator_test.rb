@@ -38,6 +38,8 @@ class TalkGeneratorTest < Rails::Generators::TestCase
       "--kind", "keynote",
       "--language", "Japanese",
       "--date", "2025-09-15",
+      "--track", "Main Stage",
+      "--slides-url", "https://speakerdeck.com/jane/doe",
       "--speakers", "Jane Doe"
     ]
 
@@ -47,6 +49,8 @@ class TalkGeneratorTest < Rails::Generators::TestCase
       assert_match(/kind: "keynote"/, content)
       assert_match(/language: "Japanese"/, content)
       assert_match(/date: "2025-09-15"/, content)
+      assert_match(/track: "Main Stage"/, content)
+      assert_match(/slides_url: "https:\/\/speakerdeck.com\/jane\/doe"/, content)
       assert_match(/- Jane Doe/, content)
     end
   end
@@ -361,7 +365,8 @@ class TalkGeneratorTest < Rails::Generators::TestCase
       "--id", "andy-andrea-2026",
       "--date", "2026-07-14",
       "--start-time", "16:15",
-      "--end-time", "17:00"
+      "--end-time", "17:00",
+      "--track", "Workshop Studio"
     ]
 
     assert_valid_file videos_file_path do |content|
@@ -369,6 +374,7 @@ class TalkGeneratorTest < Rails::Generators::TestCase
       assert_match(/date: "2026-07-14"/, content)
       assert_match(/start_time: 16:15/, content)
       assert_match(/end_time: 17:00/, content)
+      assert_match(/track: Workshop Studio/, content)
     end
   end
 
